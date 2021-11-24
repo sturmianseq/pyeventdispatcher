@@ -54,6 +54,7 @@ class TestRegister:
         ],
     )
     def test_listeners_executed_in_order(self, to_register, output, capsys):
+        pyeventdispatcher.event_dispatcher.global_registry = MemoryRegistry()
         py_event_dispatcher = EventDispatcher()
         for register in to_register:
             py_event_dispatcher.register(
